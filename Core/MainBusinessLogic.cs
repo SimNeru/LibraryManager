@@ -22,16 +22,34 @@ namespace Core
             _bookRepo = bookRepo;
         }
 
-        public string CreateBook(string title)
+        public string CreateBook(string title, string author)
         {
-            throw new NotImplementedException();
+            try
+            { 
+                _bookRepo.Create(new Book(title, author));
+                return "Book added";
+            }
+            catch (ArgumentException e)
+            {
+                return e.Message;
+            }
+        }
+
+        public void DeleteBookList(Guid id)
+        {
+            _bookRepo.DeleteById(id);
+        }
+
+        public void DeleteBookById()
+        {
+            _bookRepo.DeleteAll();
         }
 
         public string DeleteBook(Guid id)
         {
             try
             {
-                bookRepo.DeleteById(id);
+                _bookRepo.DeleteById(id);
                 return $"Deleted book";
             }
             catch (ArgumentException e)
@@ -42,7 +60,7 @@ namespace Core
 
         public List<Book> GetAllBooks()
         {
-            
+            return _bookRepo.GetAll();
         }
 
         public string CreateUser(string name)
@@ -113,6 +131,21 @@ namespace Core
         }
 
         public List<Loan> GetAllLoans()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string CreateBook(string title)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<Loan> IMainBusinessLogic.GetLoansByUser(User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        List<Loan> IMainBusinessLogic.GetLoansByBook(Book book)
         {
             throw new NotImplementedException();
         }

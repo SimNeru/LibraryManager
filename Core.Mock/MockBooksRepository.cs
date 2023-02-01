@@ -3,6 +3,7 @@ using Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -62,14 +63,13 @@ namespace Core.Mock
                 if (item.Id == id) 
                 {
                     books.Remove(item);
-                    Console.WriteLine(item.ToString()+" removed");
                 }
             }
         }
 
         public List<Book> GetAll()
         {
-            throw new NotImplementedException();
+            return books;
         }
 
         public Book GetById(Guid id)

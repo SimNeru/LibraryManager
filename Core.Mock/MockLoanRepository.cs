@@ -42,6 +42,11 @@ namespace Core.Mock
             }
         }
 
+        public List<Loan> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public Loan GetById(Guid id)
         {
             foreach (var loan in bookLoaned)
