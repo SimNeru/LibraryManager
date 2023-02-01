@@ -83,20 +83,20 @@ namespace Core
             throw new NotImplementedException();
         }
 
-        List<Loan> GetLoansByUser(User user)
+        public List<Loan> GetLoansByUser(User user)
         {
             if (user != null)
                 throw new ArgumentException("Invalid User");
-            var loan = _loanRepo.GetLoanByUser(user);
-            return null;
+            var loans = _loanRepo.GetByName(user.LastName);
+            return loans;
         }
 
-        List<Loan> GetLoansByBook(Book book)
+        public List<Loan> GetLoansByBook(Book book)
         {
             if (book != null)
                 throw new ArgumentException("Invalid Name Book");
-            var loan = _loanRepo.GetLoanByBook(name);
-            return null;
+            var loans = _loanRepo.GetByName(book.Title);
+            return loans;
         }
 
         public List<Loan> GetLoansById(Guid id)

@@ -42,7 +42,12 @@ namespace Core.Mock
             }
         }
 
-        public Loan GetById(Guid id)
+        public List<Loan> GetAll()
+        {
+            return bookLoaned;
+        }
+
+        public List<Loan> GetById(Guid id)
         {
             foreach (var loan in bookLoaned)
             {
@@ -52,7 +57,7 @@ namespace Core.Mock
             return null;
         }
 
-        public Loan GetByName(string name)
+        public List<Loan> GetByName(string name)
         {
             throw new NotImplementedException();
         }

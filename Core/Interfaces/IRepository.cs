@@ -12,8 +12,8 @@ namespace Core.Interfaces
         public void UpdateById(Guid id);
         public void DeleteById(Guid id);
         public void DeleteAll();
-        public T GetById(Guid id);
-        public T GetByName(string name);
+        public List<T> GetById(Guid id);
+        public List<T> GetByName(string name);
         public List<T> GetAll();
     }
 }
