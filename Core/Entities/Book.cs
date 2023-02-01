@@ -13,5 +13,20 @@ namespace Core.Entities
         public string Author { get; private set; }
         public bool Availability { get; private set; }
 
+        public Book(string title, string Author) { 
+            Id= Guid.NewGuid();
+            this.Title= title;
+            this.Author= Author;
+            Availability = true;
+        }
+
+        public void Return() {
+            Availability = true;
+        }
+
+        public void Loan()
+        {
+            Availability = false;
+        }
     }
 }

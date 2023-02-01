@@ -9,23 +9,11 @@ namespace Core.Interfaces
 {
     public interface IMainBusinessLogic
     {
-        public void CreateUser();
-
-        public void GetUser();
-
-        public void UpdateUser();
-
-        public void DeleteUser();
-
-        public void GetAllUsers();
-
-        public void CreateBook();
-
-        public void GetBook();
-
-        public void UpdateBook();
-
-        public void DeleteBook();
-
+        public void LoanBook(Book book, User user);
+        public void ReturnBook(Book book, User user);
+        public List<Loan> GetLoansByUser(string name, string lastname);
+        public List<Loan> GetLoansByBook(string name);
+        public List<Loan> GetLoansById(Guid id);
+        public List<Loan> GetAllLoans();
     }
 }
