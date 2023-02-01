@@ -5,43 +5,69 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Core
 {
     public class MainBusinessLogic : IMainBusinessLogic
     {
-        private readonly IRepository<Loan> _loanRepo;
         private readonly IRepository<User> _userRepo;
+        private readonly IRepository<Loan> _loanRepo;
         private readonly IRepository<Book> _bookRepo;
 
-        public MainBusinessLogic(IRepository<Loan> loanRepo)
+        public MainBusinessLogic(IRepository<User> userRepo, IRepository<Loan> loanRepo, IRepository<Book> bookRepo)
         {
+            _userRepo = userRepo;
             _loanRepo = loanRepo;
+            _bookRepo = bookRepo;
         }
 
-        public Loan GetLoansByBook(string name)
+        public string CreateBook(string title)
         {
-            if (name.Equals("") && name.Equals(string.Empty))
-                throw new ArgumentException("Invalid Name Book");
-            try {
-                var loan = _loanRepo.GetLoanByBook(name);
-            }catch(Exception){
-                return null;
-            }
+            throw new NotImplementedException();
         }
 
-        public Loan GetLoansByUser(string name, string lastname)
+        public string DeleteBook(Guid id)
         {
-            if (name.Equals("") && name.Equals(string.Empty))
-                throw new ArgumentException("Invalid Name Book");
+            throw new NotImplementedException();
+        }
+
+        public List<Book> GetAllBooks()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string CreateUser(string name)
+        {
             try
             {
-                var loan = _loanRepo.GetLoanByUser(name,lastname);
+                string firstName = name.Split(" ")[0];
+                string lastName = name.Split(" ")[1];
+                _userRepo.Create(new User(firstName, lastName));
+                return $"Created user {firstName} {lastName}";
             }
-            catch (Exception)
+            catch (ArgumentException e)
             {
-                return null;
+                return e.Message;
             }
+        }
+
+        public string DeleteUser(Guid id)
+        {
+            try
+            {
+                _userRepo.DeleteById(id);
+                return $"Deleted user";
+            }
+            catch (ArgumentException e)
+            {
+                return e.Message;
+            }
+        }
+
+        public List<User> GetAllUsers()
+        {
+            return _userRepo.GetAll();
         }
 
         public void LoanBook(Book book, User user)
@@ -52,56 +78,25 @@ namespace Core
                 throw new ArgumentException($"{book.Title} is already loaned");
         }
 
-
-
-        public void CreateBook()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CreateUser()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteBook()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteUser()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GetAllUsers()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GetBook()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GetUser()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateBook()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateUser()
-        {
-            throw new NotImplementedException();
-        }
-
         public void ReturnBook(Book book, User user)
         {
             throw new NotImplementedException();
+        }
+
+        List<Loan> GetLoansByUser(User user)
+        {
+            if (user != null)
+                throw new ArgumentException("Invalid User");
+            var loan = _loanRepo.GetLoanByUser(user);
+            return null;
+        }
+
+        List<Loan> GetLoansByBook(Book book)
+        {
+            if (book != null)
+                throw new ArgumentException("Invalid Name Book");
+            var loan = _loanRepo.GetLoanByBook(name);
+            return null;
         }
 
         public List<Loan> GetLoansById(Guid id)
@@ -113,5 +108,5 @@ namespace Core
         {
             throw new NotImplementedException();
         }
-    }
+    } 
 }

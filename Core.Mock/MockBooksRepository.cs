@@ -10,12 +10,39 @@ namespace Core.Mock
 {
     public class MockBooksRepository : IRepository<Book>
     {
+        public List<Book> books;
 
-        List<Book> books;
-
-        public MockBooksRepository()
-        {
-        }
+        public MockBooksRepository() { 
+        this.books = new List<Book> {
+            new Book
+            { 
+                Id = Guid.NewGuid(),
+                Title = "Promessi Sposi",
+                Author = "Manzoni",
+                Availability = true
+            },
+            new Book
+            (
+                Id = Guid.NewGuid(),
+                Title = "Signore degli Anelli",
+                Author = "J.R.R. Tolkien",
+                Availability = true
+            )
+            new Book
+            (
+                Id = Guid.NewGuid(),
+                Title = "Signore degli Anelli",
+                Author = "J.R.R. Tolkien",
+                Availability = true
+            )
+            new Book
+            (
+                Id = Guid.NewGuid(),
+                Title = "Signore degli Anelli",
+                Author = "J.R.R. Tolkien",
+                Availability = true
+            )
+           } 
 
         public void Create(Book value)
         {
