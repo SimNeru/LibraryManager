@@ -17,38 +17,28 @@ namespace Core.Mock
             this.books = new List<Book> {
                 new Book
                 (
-                    Guid.NewGuid(),
                     "Promessi Sposi",
-                    "Alessandro Manzoni",
-                    true
+                    "Alessandro Manzoni"
                 ),
                 new Book
                 (
-                    Guid.NewGuid(),
                     "Il Signore degli Anelli",
-                    "J.R.R. Tolkien",
-                    true
+                    "J.R.R. Tolkien"
                 ),
                 new Book
                 (
-                    Guid.NewGuid(),
                     "Harry Potter",
-                    "J.Rowling",
-                    true
+                    "J.Rowling"
                 ),
                 new Book
                 (
-                    Guid.NewGuid(),
                     "Fight Club",
-                    "Chuck Pahlaniuk",
-                    true
+                    "Chuck Pahlaniuk"
                 ),
                 new Book
                 (
-                    Guid.NewGuid(),
                     "Il dracula di Bram Stoker",
-                    "Bram Stoker",
-                    true
+                    "Bram Stoker"
                 )
             };
         }
@@ -77,21 +67,24 @@ namespace Core.Mock
             }
         }
 
+        public List<Book> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public Book GetById(Guid id)
         {
             return books.FirstOrDefault(x => x.Id == id);
         }
 
-        public Book GetByTitle(string title)
+        public Book GetByName(string title)
         {
             return books.FirstOrDefault(x => x.Title == title);
         }
 
-        public Book UpdateById(Book book)
+        public void UpdateById(Guid id)
         {
-            var storedId = book.Id;
-            var bookUpdated = books.FirstOrDefault(x => x.Id == book.Id);
-            return book;
+            throw new NotImplementedException();
         }
     }
 }
