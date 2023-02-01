@@ -14,6 +14,6 @@ namespace Core.Interfaces
         public void DeleteAll();
         public T GetById(Guid id);
         public T GetByName(string name);
-
+        public List<T> GetAll();
     }
 }
