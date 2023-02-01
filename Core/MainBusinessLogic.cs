@@ -12,6 +12,7 @@ namespace Core
     public class MainBusinessLogic : IMainBusinessLogic
     {
         public IRepository<User> userRepo;
+        public IRepository<Book> bookRepo;
 
 
         public MainBusinessLogic(IRepository<User> userRepo ) { 
@@ -25,12 +26,20 @@ namespace Core
 
         public string DeleteBook(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                bookRepo.DeleteById(id);
+                return $"Deleted book";
+            }
+            catch (ArgumentException e)
+            {
+                return e.Message;
+            }
         }
 
         public List<Book> GetAllBooks()
         {
-            throw new NotImplementedException();
+            
         }
 
         public string CreateUser(string name)

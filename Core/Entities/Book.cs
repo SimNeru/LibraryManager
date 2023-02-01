@@ -20,5 +20,10 @@ namespace Core.Entities
             Author = author;
             Availability = availability;
         }
+
+        public override string ToString()
+        {
+            return $"[Id]:{Id}\n[Title]:{Title}\n[Author]:{Author}\n[Availability]:{Availability}\n";
+        }
     }
 }

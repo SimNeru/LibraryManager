@@ -12,66 +12,86 @@ namespace Core.Mock
     {
         public List<Book> books;
 
-        public MockBooksRepository() { 
-        this.books = new List<Book> {
-            new Book
-            { 
-                Id = Guid.NewGuid(),
-                Title = "Promessi Sposi",
-                Author = "Manzoni",
-                Availability = true
-            },
-            new Book
-            (
-                Id = Guid.NewGuid(),
-                Title = "Signore degli Anelli",
-                Author = "J.R.R. Tolkien",
-                Availability = true
-            )
-            new Book
-            (
-                Id = Guid.NewGuid(),
-                Title = "Signore degli Anelli",
-                Author = "J.R.R. Tolkien",
-                Availability = true
-            )
-            new Book
-            (
-                Id = Guid.NewGuid(),
-                Title = "Signore degli Anelli",
-                Author = "J.R.R. Tolkien",
-                Availability = true
-            )
-           } 
-
-        public void Create(Book value)
+        public MockBooksRepository()
         {
-            throw new NotImplementedException();
+            this.books = new List<Book> {
+                new Book
+                (
+                    Guid.NewGuid(),
+                    "Promessi Sposi",
+                    "Alessandro Manzoni",
+                    true
+                ),
+                new Book
+                (
+                    Guid.NewGuid(),
+                    "Il Signore degli Anelli",
+                    "J.R.R. Tolkien",
+                    true
+                ),
+                new Book
+                (
+                    Guid.NewGuid(),
+                    "Harry Potter",
+                    "J.Rowling",
+                    true
+                ),
+                new Book
+                (
+                    Guid.NewGuid(),
+                    "Fight Club",
+                    "Chuck Pahlaniuk",
+                    true
+                ),
+                new Book
+                (
+                    Guid.NewGuid(),
+                    "Il dracula di Bram Stoker",
+                    "Bram Stoker",
+                    true
+                )
+            };
+        }
+
+        public void Create(Book book)
+        {
+            if (books.Any(x => x.Title == book.Title && x.Author == book.Author))
+                throw new ArgumentException("Book is already present in our archives");
+            books.Add(book);
         }
 
         public void DeleteAll()
         {
-            throw new NotImplementedException();
+            books = new List<Book>();
         }
 
         public void DeleteById(Guid id)
         {
-            throw new NotImplementedException();
+            foreach (var item in books)
+            {
+                if (item.Id == id) 
+                {
+                    books.Remove(item);
+                    Console.WriteLine(item.ToString()+" removed");
+                }
+            }
         }
 
         public Book GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return books.FirstOrDefault(x => x.Id == id);
         }
 
-        public Book GetByName(string name)
+        public Book GetByTitle(string title)
         {
-            throw new NotImplementedException();
+            return books.FirstOrDefault(x => x.Title == title);
         }
 
-        public void UpdateById(Guid id)
+        public Book UpdateById(Book book)
         {
-            throw new NotImplementedException();
+            var storedId = book.Id;
+            var bookUpdated = books.FirstOrDefault(x => x.Id == book.Id);
+            return book;
         }
     }
 }
