@@ -28,5 +28,10 @@ namespace Core.Entities
         {
             Availability = false;
         }
+
+        public override string ToString()
+        {
+            return $"[Id]:{Id}\n[Title]:{Title}\n[Author]:{Author}\n[Availability]:{Availability}\n";
+        }
     }
 }

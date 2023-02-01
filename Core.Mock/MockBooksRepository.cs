@@ -3,6 +3,7 @@ using Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,61 +13,73 @@ namespace Core.Mock
     {
         public List<Book> books;
 
-        public MockBooksRepository() { 
-        this.books = new List<Book> {
-            new Book
-            { 
-                Id = Guid.NewGuid(),
-                Title = "Promessi Sposi",
-                Author = "Manzoni",
-                Availability = true
-            },
-            new Book
-            (
-                Id = Guid.NewGuid(),
-                Title = "Signore degli Anelli",
-                Author = "J.R.R. Tolkien",
-                Availability = true
-            )
-            new Book
-            (
-                Id = Guid.NewGuid(),
-                Title = "Signore degli Anelli",
-                Author = "J.R.R. Tolkien",
-                Availability = true
-            )
-            new Book
-            (
-                Id = Guid.NewGuid(),
-                Title = "Signore degli Anelli",
-                Author = "J.R.R. Tolkien",
-                Availability = true
-            )
-           } 
-
-        public void Create(Book value)
+        public MockBooksRepository()
         {
-            throw new NotImplementedException();
+            this.books = new List<Book> {
+                new Book
+                (
+                    "Promessi Sposi",
+                    "Alessandro Manzoni"
+                ),
+                new Book
+                (
+                    "Il Signore degli Anelli",
+                    "J.R.R. Tolkien"
+                ),
+                new Book
+                (
+                    "Harry Potter",
+                    "J.Rowling"
+                ),
+                new Book
+                (
+                    "Fight Club",
+                    "Chuck Pahlaniuk"
+                ),
+                new Book
+                (
+                    "Il dracula di Bram Stoker",
+                    "Bram Stoker"
+                )
+            };
+        }
+
+        public void Create(Book book)
+        {
+            if (books.Any(x => x.Title == book.Title && x.Author == book.Author))
+                throw new ArgumentException("Book is already present in our archives");
+            books.Add(book);
         }
 
         public void DeleteAll()
         {
-            throw new NotImplementedException();
+            books = new List<Book>();
         }
 
         public void DeleteById(Guid id)
         {
-            throw new NotImplementedException();
+            foreach (var item in books)
+            {
+                if (item.Id == id) 
+                {
+                    books.Remove(item);
+                }
+            }
+        }
+
+        public List<Book> GetAll()
+        {
+            return books;
         }
 
         public Book GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return books.FirstOrDefault(x => x.Id == id);
         }
 
-        public Book GetByName(string name)
+        public Book GetByName(string title)
         {
-            throw new NotImplementedException();
+            return books.FirstOrDefault(x => x.Title == title);
         }
 
         public void UpdateById(Guid id)

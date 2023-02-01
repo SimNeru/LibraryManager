@@ -73,10 +73,11 @@ namespace Core.Mock
 
         public void UpdateById(Guid id)
         {
-            User user = users.FirstOrDefault(user => user.Id == id);
+
+            /*User user = users.FirstOrDefault(user => user.Id == id);
             if (user == null)
                 throw new ArgumentException("No registered user with the specified id");
-            return user;
+            return user;*/
         }
     }
 }
