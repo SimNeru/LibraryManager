@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToscoBooks", "ToscoBooks\ToscoBooks.csproj", "{49A5C15A-A175-47C3-A755-E05DBADF2E9C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{25AA4F7A-B4A6-4E5E-9F22-7EEBBF6A353A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Mock", "Core.Mock\Core.Mock.csproj", "{8C94CF1A-25D7-470A-A43E-2A3A0D09E4C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{49A5C15A-A175-47C3-A755-E05DBADF2E9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49A5C15A-A175-47C3-A755-E05DBADF2E9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49A5C15A-A175-47C3-A755-E05DBADF2E9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49A5C15A-A175-47C3-A755-E05DBADF2E9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25AA4F7A-B4A6-4E5E-9F22-7EEBBF6A353A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25AA4F7A-B4A6-4E5E-9F22-7EEBBF6A353A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25AA4F7A-B4A6-4E5E-9F22-7EEBBF6A353A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25AA4F7A-B4A6-4E5E-9F22-7EEBBF6A353A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C94CF1A-25D7-470A-A43E-2A3A0D09E4C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C94CF1A-25D7-470A-A43E-2A3A0D09E4C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C94CF1A-25D7-470A-A43E-2A3A0D09E4C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C94CF1A-25D7-470A-A43E-2A3A0D09E4C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95DB4047-7C58-44CC-9825-6C79FFFA6B32}
+	EndGlobalSection
+EndGlobal
