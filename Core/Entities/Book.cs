@@ -13,5 +13,12 @@ namespace Core.Entities
         public string Author { get; private set; }
         public bool Availability { get; private set; }
 
+        public Book(Guid id, string title, string author, bool availability)
+        {
+            Id = id;
+            Title = title;
+            Author = author;
+            Availability = availability;
+        }
     }
 }
