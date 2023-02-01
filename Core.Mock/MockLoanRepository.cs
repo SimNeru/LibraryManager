@@ -8,16 +8,9 @@ using System.Threading.Tasks;
 
 namespace Core.Mock
 {
-    public class MockBooksRepository : IRepository<Book>
+    public class MockLoanRepository : IRepository<Loan>
     {
-
-        List<Book> books;
-
-        public MockBooksRepository()
-        {
-        }
-
-        public void Create(Book value)
+        public void Create(Loan value)
         {
             throw new NotImplementedException();
         }
@@ -32,12 +25,12 @@ namespace Core.Mock
             throw new NotImplementedException();
         }
 
-        public Book GetById(Guid id)
+        public Loan GetById(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public Book GetByName(string name)
+        public Loan GetByName(string name)
         {
             throw new NotImplementedException();
         }
