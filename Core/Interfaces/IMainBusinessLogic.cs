@@ -15,5 +15,11 @@ namespace Core.Interfaces
         public string CreateUser(string name);
         public string DeleteUser(Guid id);
         public List<User> GetAllUsers();
+        public void LoanBook(Book book, User user);
+        public void ReturnBook(Book book, User user);
+        public List<Loan> GetLoansByUser(User user);
+        public List<Loan> GetLoansByBook(Book book);
+        public List<Loan> GetLoansById(Guid id);
+        public List<Loan> GetAllLoans();
     }
 }

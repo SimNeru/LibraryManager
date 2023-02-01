@@ -13,12 +13,20 @@ namespace Core.Entities
         public string Author { get; private set; }
         public bool Availability { get; private set; }
 
-        public Book(Guid id, string title, string author, bool availability)
+        public Book(string title, string Author) { 
+            Id= Guid.NewGuid();
+            this.Title= title;
+            this.Author= Author;
+            Availability = true;
+        }
+
+        public void Return() {
+            Availability = true;
+        }
+
+        public void Loan()
         {
-            Id = id;
-            Title = title;
-            Author = author;
-            Availability = availability;
+            Availability = false;
         }
 
         public override string ToString()
